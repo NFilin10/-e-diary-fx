@@ -43,28 +43,6 @@ public class Õpilane implements Serializable {
         return this.hinded;
     }
 
-    /**
-     * Meetod kuvab õpilase hindeid aine eest
-     * @param klassid kõikide klasside ArrayList
-     * @param õpilasePerenimi õpilase perenimi
-     * @param õpilaseKlass õpilase klassi number
-     * @param valitudAine valitud aine
-     */
-    public void vaataHindeid(ArrayList<Klass> klassid, String õpilasePerenimi, String õpilaseKlass, String valitudAine){
-        for (Klass klass : klassid) {
-            //otsime sobilikku klassi
-            if (klass.getKlassiNumber().equals(õpilaseKlass) && klass.getAine().equals(valitudAine)) {
-                for (Õpilane õpilane : klass.getÕpilasteGrupp()) {
-                    //otsime sobilikku õpilast
-                    if (õpilane.getPerenimi().equals(õpilasePerenimi)) {
-                        for (int hinne : õpilane.getHinded()) {
-                            System.out.println(hinne);
-                        }
-                    }
-                }
-            }
-        }
-    }
 
     /**
      * Meetod kirjutab õpilase hindeid eraldi faili
@@ -101,7 +79,7 @@ public class Õpilane implements Serializable {
      * @param õpilaseKlass õpilase klassi number
      * @param valitudAine õpilase poolt valitud aine
      */
-    public void õpilaseKeskmineHinne(ArrayList<Klass> klassid, String õpilasePerenimi, String õpilaseKlass, String valitudAine){
+    public double õpilaseKeskmineHinne(ArrayList<Klass> klassid, String õpilasePerenimi, String õpilaseKlass, String valitudAine){
         for (Klass klass : klassid) {
             if (klass.getKlassiNumber().equals(õpilaseKlass) && klass.getAine().equals(valitudAine)) {
                 //arvutame keskmist hinnet
@@ -112,11 +90,12 @@ public class Õpilane implements Serializable {
                         for (int hinne : õpilane.getHinded()) {
                             summa+=hinne;
                         }
-                        double keskmineHinne = (double) summa/ õpilane.getHinded().size();
-                        System.out.println(keskmineHinne);
+                        double keskmine =  (double) summa/ õpilane.getHinded().size();
+                        return Math.round(keskmine * 100.0) / 100.0;
                     }
                 }
             }
         }
+        return 0;
     }
 }
