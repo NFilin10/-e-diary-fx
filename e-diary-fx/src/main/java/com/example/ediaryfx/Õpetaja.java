@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.ediaryfx;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -230,31 +230,19 @@ public class Õpetaja implements Serializable{
         myWriter.flush();
     }
 
+    /**
+     * meetod salvestab kõikide klasside andmed faili
+     * @param klassid klasside list
+     * @throws IOException
+     */
     public void salvestaAndmed(ArrayList<Klass> klassid) throws IOException {
         FileOutputStream fos = new FileOutputStream("andmed.ser");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(klassid);
 
-        System.out.println("Done");
-        // closing resources
+        System.out.println("Salvestatud!");
         oos.close();
         fos.close();
-    }
-
-    public void loeAndmed(String fail) throws IOException, ClassNotFoundException {
-        try (FileInputStream is = new FileInputStream(fail);
-             ObjectInputStream ois = new ObjectInputStream(is)) {
-
-            Klass emp;
-            while (true) {
-                try {
-                    emp = (Klass) ois.readObject();
-                    System.out.println(emp.getAine());
-                } catch (EOFException e) {
-                    break; // End of file reached
-                }
-            }
-        }
     }
 }
 

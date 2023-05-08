@@ -1,6 +1,4 @@
-package com.example.test;
-
-import com.example.test.Klass;
+package com.example.ediaryfx;
 
 import java.io.PrintWriter;
 import java.io.Serializable;
