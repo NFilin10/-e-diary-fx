@@ -57,7 +57,7 @@ public class Ediary extends Application {
                 + "Võite teada saada ainete keskmist ja salvestada oma andmeid eraldi faili. "
                 + "Sisselogimislehele minemiseks klõpsake allolevat nuppu. "
                 + "Seal tuleb täpselt sisestada oma perekonnanimi ja klass. "
-                + "Päevikus nupp \"file\" kirjutab andmed faili ja nupp \"avg\" arvutab soovitud aine keskmise hinde");
+                + "Päevikus nupp \"Salvesta faili\" kirjutab andmed faili ja nupp \"Keskmine hinne\" arvutab soovitud aine keskmise hinde");
         infoText.setFont(Font.font("Segoe UI", 14));
         infoText.setTextAlignment(TextAlignment.CENTER);
         infoText.setWrappingWidth(400);
@@ -238,7 +238,7 @@ public class Ediary extends Application {
                 for (Õpilane õpilane : klass.getÕpilasteGrupp()) {
                     if (õpilane.getPerenimi().equals(opilaseNimi)) {
                         ObservableList<SimpleStringProperty> rida = FXCollections.observableArrayList();
-                        rida.add(new SimpleStringProperty(õpilane.getPerenimi()));
+                        rida.add(new SimpleStringProperty(õpilane.getEesnimi() + " " + õpilane.getPerenimi()));
                         rida.add(new SimpleStringProperty(klass.getAine()));
 
                         for (int hinne : õpilane.getHinded()) {
@@ -293,7 +293,7 @@ public class Ediary extends Application {
                     Alert alertLogin = new Alert(Alert.AlertType.INFORMATION);
                     alertLogin.setTitle(null);
                     alertLogin.setHeaderText(null);
-                    alertLogin.setContentText("Sellist õpilast ei leidu!");
+                    alertLogin.setContentText("Sellist õpilast või klassi ei leidu!");
                     alertLogin.showAndWait();
                 }
             } catch (IOException | ClassNotFoundException ex) {
