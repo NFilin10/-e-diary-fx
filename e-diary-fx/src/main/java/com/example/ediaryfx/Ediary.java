@@ -107,7 +107,7 @@ public class Ediary extends Application {
         tabel.setEditable(false);
 
         //hinnete salvestamine faili
-        Button andmedFailiBtn = new Button("file");
+        Button andmedFailiBtn = new Button("Salvesta faili");
         andmedFailiBtn.setOnAction(event -> {
             stop:
             for (Klass klass : klassid) {
@@ -133,7 +133,7 @@ public class Ediary extends Application {
         });
 
         //keskmise hinne arvutamine valitud aines
-        Button keskmineHinneBtn = new Button("Avg");
+        Button keskmineHinneBtn = new Button("Keskmine hinne");
         TextField aineNimetus = new TextField();
         aineNimetus.setPromptText("Aine nimetus");
         keskmineHinneBtn.setOnAction(e -> {
@@ -333,7 +333,7 @@ public class Ediary extends Application {
             Alert alertFail = new Alert(Alert.AlertType.INFORMATION);
             alertFail.setTitle(null);
             alertFail.setHeaderText(null);
-            alertFail.setContentText("Sellist faili ei leidu!");
+            alertFail.setContentText("Andmete faili ei leidu!");
             alertFail.showAndWait();
             return null;
         }
